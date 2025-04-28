@@ -18,7 +18,7 @@ import 'dart:io'; // Required for File
 // and declared it in pubspec.yaml.
 
 class MainFormScreen extends StatefulWidget {
-  const MainFormScreen({Key? key}) : super(key: key);
+  const MainFormScreen({super.key});
 
   @override
   _MainFormScreenState createState() => _MainFormScreenState();
@@ -115,7 +115,7 @@ class _MainFormScreenState extends State<MainFormScreen> {
         ],
       ),
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: containerWidth,
           child: Stack(
             children: [

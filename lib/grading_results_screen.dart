@@ -10,10 +10,10 @@ class GradingResultsScreen extends StatefulWidget {
   final Map<String, dynamic> gradingData;
 
   const GradingResultsScreen({
-    Key? key,
+    super.key,
     // Accept grading data as a parameter
     required this.gradingData,
-  }) : super(key: key);
+  });
 
   @override
   _GradingResultsScreenState createState() => _GradingResultsScreenState();
@@ -57,13 +57,13 @@ class _GradingResultsScreenState extends State<GradingResultsScreen> {
 
   void _saveResult() {
     // TODO: Implement actual save logic
-    print('Saving result: ${_results}'); // Placeholder print
+    print('Saving result: $_results'); // Placeholder print
     _showToast('Result saved successfully');
   }
 
   void _shareResult() {
     // TODO: Implement actual share logic
-    print('Sharing result: ${_results}'); // Placeholder print
+    print('Sharing result: $_results'); // Placeholder print
     _showToast('Sharing options opened');
   }
 
@@ -199,7 +199,7 @@ class _GradingResultsScreenState extends State<GradingResultsScreen> {
                               ],
                             ),
                           );
-                        }).toList()
+                        })
                       else
                         const Text('Analysis details not available'),
                     ],
