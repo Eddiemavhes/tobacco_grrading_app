@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:myapp/services/classifier.dart';
+import 'package:camera/camera.dart';
 import 'dart:io'; // Required for File
 
 // You will need to add the image_picker package to your pubspec.yaml:
@@ -18,8 +20,11 @@ import 'dart:io'; // Required for File
 // and declared it in pubspec.yaml.
 
 class MainFormScreen extends StatefulWidget {
-  const MainFormScreen({super.key});
+  final dynamic classifier; // Or the correct type of your classifier
 
+  const MainFormScreen({super.key, required this.classifier});
+  
+  
   @override
   _MainFormScreenState createState() => _MainFormScreenState();
 }
@@ -28,7 +33,23 @@ class _MainFormScreenState extends State<MainFormScreen> {
   File? _imageFile;
   bool _showImageActions = false;
   bool _isUploading = false;
-  // TODO: Add camera related variables here (e.g., CameraController)
+  // Camera related variables
+  CameraController? _cameraController;
+  List<CameraDescription> _cameras = [];
+  final bool _isCameraInitialized = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the cameras as soon as the widget is created
+    _initializeCameras();
+  }
+
+  Future<void> _initializeCameras() async {
+    _cameras = await availableCameras();
+  }
+
+
 
   Future<void> _pickImage(ImageSource source) async {
     final picker = ImagePicker();
@@ -39,7 +60,10 @@ class _MainFormScreenState extends State<MainFormScreen> {
         _imageFile = File(pickedFile.path);
         _showImageActions = true;
       });
-      // TODO: If camera was used, close the camera modal here
+      // if it was camera, it will close the camera
+      if (source == ImageSource.camera){
+        _closeCamera();
+      }
     }
   }
 
@@ -80,8 +104,32 @@ class _MainFormScreenState extends State<MainFormScreen> {
     });
   }
 
-  // TODO: Implement startCamera, closeCamera, switchCamera, capturePhoto
-  // These will use the camera package.
+  // Camera Methods
+  // Here are the placeholder methods for camera controls.
+  // You'll need to implement the camera logic using the `camera` package.
+
+  void _startCamera() {
+    // TODO: Implement camera start logic
+    // Initialize the camera controller and start the camera preview.
+    print('Start Camera');
+  }
+
+  void _closeCamera() {
+    // TODO: Implement camera close logic
+    // Close the camera controller and dispose of it.
+    print('Close Camera');
+  }
+
+  void _switchCamera() {
+    // TODO: Implement camera switch logic
+    // Switch between front and rear cameras.
+    print('Switch Camera');
+  }
+
+  void _capturePhoto() {
+    // TODO: Implement photo capture logic
+    print('Capture Photo');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -244,8 +292,7 @@ class _MainFormScreenState extends State<MainFormScreen> {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
-                              // TODO: Implement camera start logic
-                              // For now, simulate picking from camera
+                              _startCamera();
                               _pickImage(ImageSource.camera);
                             },
                             style: ElevatedButton.styleFrom(
@@ -323,6 +370,7 @@ class _MainFormScreenState extends State<MainFormScreen> {
                 ),
               ),
               // Camera Modal (Placeholder)
+              // Camera logic needs to be implemented
               // TODO: Implement this using the camera package or a dedicated camera screen
               // if (_showCameraModal)
               //   Container(

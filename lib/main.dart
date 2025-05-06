@@ -43,10 +43,8 @@ class MyApp extends StatelessWidget {
         if (settings.name == '/mainForm') {
            // You can optionally pass other arguments here if needed
           return MaterialPageRoute(
-            builder: (context) => MainFormScreen(
-               // TODO: Pass the classifier instance to MainFormScreen
-               // You will need to add a TobaccoClassifier parameter to MainFormScreen
-              // classifier: classifier,
+            builder: (context) =>  MainFormScreen(
+               classifier: classifier,
             ),
           );
         }

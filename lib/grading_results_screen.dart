@@ -56,14 +56,30 @@ class _GradingResultsScreenState extends State<GradingResultsScreen> {
   }
 
   void _saveResult() {
-    // TODO: Implement actual save logic
-    print('Saving result: $_results'); // Placeholder print
+    // Placeholder for Save Logic
+    // -----------------------------
+    // Here you should implement the logic to save the results.
+    // For example, you might:
+    // 1. Save to local storage using SharedPreferences or path_provider.
+    // 2. Save to a local database using SQLite or Isar.
+    // 3. Send data to a server via an API call.
+    // Example:
+    //   final prefs = await SharedPreferences.getInstance();
+    //   await prefs.setString('gradingResult', jsonEncode(_results));
+    // Or if you are saving to a database you should call a method of your database helper here
+    print('Saving result: $_results');
     _showToast('Result saved successfully');
   }
 
   void _shareResult() {
-    // TODO: Implement actual share logic
-    print('Sharing result: $_results'); // Placeholder print
+    // Placeholder for Share Logic
+    // ------------------------------
+    // Here you should implement the logic to share the results.
+    // For example, you might:
+    // 1. Use the share_plus package to share text or files.
+    // Example using share_plus:
+    //   await Share.share('Grading Results: ${_results.toString()}');
+    print('Sharing result: $_results');
     _showToast('Sharing options opened');
   }
 

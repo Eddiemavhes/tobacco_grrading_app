@@ -39,6 +39,7 @@ dependencies:
   ml_algo: ^16.17.13 # Updated ml_algo version for null safety
   ml_dataframe: # Kept open version for ml_dataframe to find a compatible one
   flutter_isolate: ^2.0.0
+  camera: ^0.11.1
 
 dev_dependencies:
   flutter_test:
